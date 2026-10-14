@@ -53,7 +53,7 @@ Berikut merupakan hasil evaluasi model terbaik pada dataset validasi:
 
 | Putaran | Commit | Macro-F1 (split validasi lokal) | Macro-F1 (diumumkan asisten) |
 |---------|--------|----------------------------------|------------------------------|
-| Preview 1 (14 Okt) | | | |
+| Preview 1 (14 Okt) | b4a940b | 0.9528 | |
 | Preview 2 (21 Okt) | | | |
 | Final (25 Okt) | | | |
 
