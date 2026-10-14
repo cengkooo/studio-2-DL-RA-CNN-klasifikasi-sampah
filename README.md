@@ -77,8 +77,9 @@ Baseline ResNet-18 pretrained (8 epoch) mencapai Macro-F1 sekitar **0,92** pada 
 
 | Model | Macro-F1 (lokal) | Accuracy (lokal) | Macro-F1 (preview) |
 |-------|------------------|------------------|--------------------|
-| ResNet-18 baseline | - | - | - |
-| RA-CNN (backbone: -) | - | - | - |
+| ResNet-18 baseline | ~0.92 | - | - |
+| EfficientNetV2-S (Two-Stage Fine-Tuning) | - | - | - |
+| RA-CNN (Eksperimen Lanjutan) | - | - | - |
 
 F1 per kelas dan confusion matrix akan dilampirkan setelah evaluasi lokal.
 
@@ -88,13 +89,15 @@ F1 per kelas dan confusion matrix akan dilampirkan setelah evaluasi lokal.
 
 ```
 studio-2-DL-RA-CNN-klasifikasi-sampah/
-├── README.md              # dokumen ini
+├── README.md              # dokumen ini (identitas kelompok, pendekatan, hasil)
 ├── submission/
 │   ├── model.py           # get_model() dan get_transform()
 │   ├── model.pth          # state_dict model terbaik
-│   └── requirements.txt   # paket tambahan, mis. timm
+│   └── requirements.txt   # dependensi tambahan (torch, torchvision, timm, dll.)
 ├── evaluate.py            # salinan skrip evaluasi resmi
-└── ...                    # notebook / kode pelatihan
+├── train.py               # skrip pelatihan model
+└── train.ipynb            # notebook pelatihan & eksperimen
+```
 
 ---
 

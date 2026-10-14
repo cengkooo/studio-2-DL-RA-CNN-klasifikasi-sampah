@@ -17,11 +17,18 @@ __pycache__/
 *.safetensors
 *.ckpt
 
+# Jangan abaikan bobot model submission (maks 500 MB)
+!submission/
+!submission/*.pth
+!submission/*.pt
+
 # Folder khusus jika Anda menyimpan model/data secara lokal
 models/
 weights/
 dataset/
 data/
+train/
+my_val/
 
 # --- Catatan Agen / File Spesifik ---
 # Mengabaikan file agents.md sesuai permintaan
