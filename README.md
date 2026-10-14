@@ -77,12 +77,14 @@ python evaluate.py --submission ./submission --data ./my_val --out metrics.json
 ```
 
 ## Struktur Repositori
+```bash
+submission/
+├── model.py          # get_model() dan get_transform()
+├── model.pth         # state_dict model terbaik
+└── requirements.txt  # paket/dependensi yang diperlukan
 
-- **submission/**
-  - **model.py** — `get_model()` dan `get_transform()`
-  - **model.pth** — `state_dict` model terbaik
-  - **requirements.txt** — paket/dependensi yang diperlukan
-- **evaluate.py** — salinan skrip evaluasi resmi
-- **train.py** — kode pelatihan model
-- **README.md** — dokumentasi proyek
-- **...** — kode/notebook pelatihan kelompok
+evaluate.py           # salinan skrip evaluasi resmi
+train.py              # kode pelatihan model
+README.md             # dokumentasi proyek
+...                   # kode/notebook pelatihan kelompok
+```
