@@ -70,7 +70,6 @@ Berdasarkan hasil evaluasi per kelas, performa terbaik diperoleh pada kelas `bot
 ### Instalasi Dependensi
 
 Instal seluruh dependensi yang diperlukan menggunakan perintah berikut:
-
 ```bash
 pip install -r requirements.txt
 python train.py
@@ -78,13 +77,12 @@ python evaluate.py --submission ./submission --data ./my_val --out metrics.json
 ```bash
 
 ## Struktur Repositori
-```bash
-submission/
-├── model.py          # get_model() dan get_transform()
-├── model.pth         # state_dict model terbaik
-└── requirements.txt  # paket/dependensi yang diperlukan
 
-evaluate.py           # salinan skrip evaluasi resmi
-train.py              # kode pelatihan model
-README.md             # dokumentasi proyek
-...                   # kode/notebook pelatihan kelompok
+- **submission/**
+  - **model.py** — `get_model()` dan `get_transform()`
+  - **model.pth** — `state_dict` model terbaik
+  - **requirements.txt** — paket/dependensi yang diperlukan
+- **evaluate.py** — salinan skrip evaluasi resmi
+- **train.py** — kode pelatihan model
+- **README.md** — dokumentasi proyek
+- **...** — kode/notebook pelatihan kelompok
