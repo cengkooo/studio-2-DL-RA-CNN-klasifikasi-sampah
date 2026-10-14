@@ -1,0 +1,34 @@
+# --- Python & Environment ---
+.venv/
+uv.lock
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- AI Models, Datasets & Weights (Ukuran Besar) ---
+# Mengabaikan semua file model populer
+*.onnx
+*.pkl
+*.pth
+*.pt
+*.h5
+*.bin
+*.gguf
+*.safetensors
+*.ckpt
+
+# Folder khusus jika Anda menyimpan model/data secara lokal
+models/
+weights/
+dataset/
+data/
+
+# --- Catatan Agen / File Spesifik ---
+# Mengabaikan file agents.md sesuai permintaan
+agents.md
+
+# --- Environment Variables & Secrets (KEAMANAN) ---
+.env
+.env.*
+.openai_api_key
+.anthropic_api_key
