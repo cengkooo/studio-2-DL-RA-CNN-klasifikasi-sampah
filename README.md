@@ -74,7 +74,7 @@ Instal seluruh dependensi yang diperlukan menggunakan perintah berikut:
 pip install -r requirements.txt
 python train.py
 python evaluate.py --submission ./submission --data ./my_val --out metrics.json
-```bash
+```
 
 ## Struktur Repositori
 
