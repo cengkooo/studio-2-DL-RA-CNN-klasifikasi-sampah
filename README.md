@@ -49,13 +49,13 @@ Berikut merupakan hasil evaluasi model terbaik pada dataset validasi:
 | `saset_kemasan` | 0.9700 |
 | `styrofoam` | 0.9596 |
 
-### Rekapitulasi Hasil Eksperimen
+### Hasil
 
 | Putaran | Commit | Macro-F1 (split validasi lokal) | Macro-F1 (diumumkan asisten) |
 |---------|--------|----------------------------------|------------------------------|
 | Preview 1 (14 Okt) | | | |
 | Preview 2 (21 Okt) | | | |
-| Final (25 Okt) | | 0.9528 | |
+| Final (25 Okt) | | | |
 
 ### Catatan Eksperimen
 
