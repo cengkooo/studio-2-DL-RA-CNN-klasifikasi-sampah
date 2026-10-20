@@ -53,13 +53,29 @@ Berikut merupakan hasil evaluasi model terbaik pada dataset validasi:
 
 | Putaran | Commit | Macro-F1 (split validasi lokal) | Macro-F1 (diumumkan asisten) |
 |---------|--------|----------------------------------|------------------------------|
-| Preview 1 (14 Okt) | b4a940b | 0.9528 | |
+| Preview 1 (14 Okt) | b4a940b | 0.9528 | 0.9493 |
 | Preview 2 (21 Okt) | | | |
 | Final (25 Okt) | | | |
 
 ### Catatan Eksperimen
 
-Eksperimen dilakukan menggunakan model **EfficientNetV2** untuk melakukan klasifikasi citra sampah ke dalam lima kelas.
+Eksperimen dilakukan menggunakan model **EfficientNetV2-S** untuk melakukan klasifikasi citra sampah ke dalam lima kelas.
+
+#### Parameter dan Konfigurasi Pelatihan
+
+| Parameter / Komponen | Nilai / Konfigurasi | Keterangan |
+|----------------------|---------------------|------------|
+| **Arsitektur Model** | EfficientNetV2-S | Pretrained ImageNet |
+| **Ukuran Citra (Input)** | 224 × 224 piksel | Resize 256 → CenterCrop 224 |
+| **Batch Size** | 32 | Batch size pelatihan dan validasi |
+| **Jumlah Epoch** | 15 | Total iterasi epoch |
+| **Optimizer** | AdamW | `weight_decay = 0.01` |
+| **Learning Rate (LR)** | `2e-4` (0.0002) | Learning rate awal |
+| **LR Scheduler** | CosineAnnealingLR | `T_max = 15`, `eta_min = 1e-6` |
+| **Loss Function** | CrossEntropyLoss | `label_smoothing = 0.1` + Class Weighting dinamis |
+| **Data Augmentation** | RandomResizedCrop (scale 0.7–1.0), Horizontal Flip (p=0.5), Rotation (15°), ColorJitter (0.2) | Untuk generalisasi data training |
+| **Data Split** | 85% Train / 15% Validation | Stratified random split |
+| **Random Seed** | 42 | Menjamin hasil dapat direproduksi |
 
 Berdasarkan hasil evaluasi pada dataset validasi, model terbaik memperoleh **Loss sebesar 0.4035**, **akurasi validasi sebesar 95.61%**, dan **Validation Macro F1-Score sebesar 95.28%**.
 
