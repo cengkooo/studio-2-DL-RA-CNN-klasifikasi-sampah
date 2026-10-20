@@ -3,6 +3,7 @@ import os
 import random
 import shutil
 import time
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -94,6 +95,14 @@ def main():
     va_ds = datasets.ImageFolder(va_dir, transform=val_tf)
     print(f"--> Dataset: Train = {len(tr_ds)} citra | Val = {len(va_ds)} citra | 5 Kelas: {tr_ds.classes}")
 
+    # Hitung bobot kelas (class weighting)  untuk menangani ketidak seimbangan jmlh data
+    class_counts = Counter(tr_ds.targets)
+    total_samples = len(tr_ds)
+    weights = [total_samples / (NUM_CLASSES * class_counts[i]) for i in range(NUM_CLASSES)]
+    class_weights = torch.tensor(weights, dtype=torch.float32).to(device)
+    print(f"Distribusi Sampel Train : {[class_counts[i] for i in range(NUM_CLASSES)]}")
+    print(f"Class Weights Diterapkan: {[round(w, 3) for w in weights]}")
+
     tr_dl = DataLoader(tr_ds, batch_size=args.batch_size, shuffle=True, num_workers=2, pin_memory=(device == "cuda"))
     va_dl = DataLoader(va_ds, batch_size=args.batch_size, shuffle=False, num_workers=2, pin_memory=(device == "cuda"))
 
@@ -106,7 +115,7 @@ def main():
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=1e-6)
-    loss_fn = nn.CrossEntropyLoss(label_smoothing=0.1)
+    loss_fn = nn.CrossEntropyLoss(weight=class_weights, label_smoothing=0.1)
 
     best_macro_f1 = 0.0
     Path("submission").mkdir(parents=True, exist_ok=True)
