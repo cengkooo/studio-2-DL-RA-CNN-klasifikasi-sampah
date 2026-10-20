@@ -82,12 +82,13 @@ def main():
 
     # Augmentasi data training & transform evaluasi resmi
     train_tf = transforms.Compose([
-        transforms.RandomResizedCrop(224, scale=(0.7, 1.0)),
+        transforms.RandomResizedCrop(224, scale=(0.4, 1.0)),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomRotation(degrees=15),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2),
+        transforms.TrivialAugmentWide(),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        transforms.RandomErasing(p=0.25, scale=(0.02, 0.2), value="random"),
     ])
     val_tf = get_transform()
 
