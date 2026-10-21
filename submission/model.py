@@ -25,10 +25,10 @@ def get_model():
 
 
 def get_transform():
-    """Transform validasi: PIL.Image (RGB) -> Tensor [3, 224, 224]."""
+    """Transform validasi: PIL.Image (RGB) -> Tensor [3, 384, 384]."""
     return transforms.Compose([
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
+        transforms.Resize(384),
+        transforms.CenterCrop(384),
         transforms.ToTensor(),
         transforms.Normalize(
             mean=[0.485, 0.456, 0.406],

@@ -82,7 +82,7 @@ def main():
 
     # Augmentasi data training & transform evaluasi resmi
     train_tf = transforms.Compose([
-        transforms.RandomResizedCrop(224, scale=(0.4, 1.0)),
+        transforms.RandomResizedCrop(384, scale=(0.4, 1.0)),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomRotation(degrees=15),
         transforms.TrivialAugmentWide(),
